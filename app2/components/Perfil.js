@@ -1,14 +1,17 @@
 import {Text, View, StyleSheet, Button} from 'react-native' ;
 import {useState} from 'react' ;
 
-export const Perfil=({nombre, carrera, materia, cuatri})=>{
+export const Perfil=({nombre, carrera, materia, cuatri, style})=>{
     const [mostrar, setMostrar]=useState(false) ;
     return(
-        <View>
-            <Text> {nombre}</Text>
+        <View style={[estilos.tarjeta,style]}>
+
+            <Text style={estilos.nombre}> {nombre}</Text>
+            
             {mostrar &&
             <>
             <Text> {carrera}</Text>
+            <Text> {materia}</Text>
             <Text> {materia}</Text>
             <Text> {cuatri}</Text>
             </>
@@ -17,3 +20,29 @@ export const Perfil=({nombre, carrera, materia, cuatri})=>{
         </View>
     )
 }
+
+const estilos = StyleSheet.create({
+nombre: {
+    fontSize: 24,
+    fontWeight: '600',
+    textTransform: 'uppercase',
+},
+otroTexto: {
+    fontSize: 12,
+    fontFamily: 'Courier',
+    textStyle: 'italic',
+},
+carrera: {
+    fontSize: 18,
+    color: 'blue',
+    fontFamily:'Roboto'
+},
+tarjeta:{
+    borderWidth: 6,
+    borderRadius: 10,
+    padding: 15,
+    margin: 10
+}
+
+
+});
