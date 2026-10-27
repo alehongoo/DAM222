@@ -1,26 +1,59 @@
 /* 1. Zona de importaciones */
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet,Text, View} from 'react-native';
+import { StyleSheet,Text, View, SafeAreaView, ScrollView} from 'react-native';
 
-/* 2. Zona Main*/
 export default function SafeScreen() {
+
   return (
-    <View style={styles.container}>
-    
-        <Text>Aqui va la practica de Uriel u Aaron</Text>
+  
+  <SafeAreaView style={styles.safeArea}>
 
-      <StatusBar style="auto" />
+  <ScrollView contentContainerStyle={styles.scrollContent}>
+    <Text style={styles.title}>Practica en equipo</Text>
+    <Text style={styles.subtitle}>Desliza hacia abajo para ver mas</Text>
 
-    </View>
+    {[...Array(15)].map((_, index)=> (
+      <View key ={index} style={styles.box}>
+          <Text>Registro de prueba {index + 1}</Text>
+
+      </View>
+
+    ))} 
+
+     <StatusBar style="auto" />
+
+  </ScrollView>
+  </SafeAreaView>
   );
 }
 
 /* 3. Zona Estilos & Posicionamiento */
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+safeArea:{
+  flex:1,
+  backgroundColor: 'blue'
   },
+scrollContent:{
+padding:20,
+alignItems: 'center'
+},
+title:{
+  fontSize:24,
+  fontWeight: 'bold',
+  marginTop: 10
+},
+subtitle:{
+  fontSize: 16,
+  color: '#666',
+ marginBottom:20
+},
+box:{
+backgroundColor:'white',
+width: '90%',
+padding:30,
+marginVertical:10,
+borderRadius: 8,
+elevation:3
+}
+
 });
